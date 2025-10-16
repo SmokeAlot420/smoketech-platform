@@ -1,0 +1,161 @@
+{
+  "id": "single-video-v1",
+  "name": "Single Video Generation",
+  "version": "1.0.0",
+  "description": "Generate a single ultra-realistic video with character creation",
+  "executionMode": "sequential",
+  "nodes": [
+    {
+      "id": "character_image",
+      "type": "image_generator",
+      "label": "Generate Character",
+      "params": {
+        "model": "nanobana",
+        "temperature": 0.3,
+        "count": 1,
+        "quality": "hd",
+        "aspectRatio": "1:1"
+      },
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "string",
+          "description": "Character description",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "image",
+          "description": "Generated character image",
+          "required": false
+        },
+        {
+          "name": "imagePath",
+          "type": "string",
+          "description": "Path to generated image",
+          "required": false
+        },
+        {
+          "name": "metadata",
+          "type": "object",
+          "description": "Generation metadata",
+          "required": false
+        }
+      ],
+      "metadata": {
+        "position": {"x": 100, "y": 100}
+      }
+    },
+    {
+      "id": "video_gen",
+      "type": "video_generator",
+      "label": "Generate Video",
+      "params": {
+        "model": "veo3-fast",
+        "duration": 8,
+        "aspectRatio": "16:9",
+        "quality": "high",
+        "count": 1,
+        "enableSound": true,
+        "enablePromptRewriting": false
+      },
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "string",
+          "description": "Video action prompt",
+          "required": true
+        },
+        {
+          "name": "characterImage",
+          "type": "string",
+          "description": "Character image path for image-to-video",
+          "required": false
+        },
+        {
+          "name": "negativePrompt",
+          "type": "string",
+          "description": "Negative prompt (what to avoid)",
+          "required": false,
+          "defaultValue": ""
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "video",
+          "description": "Generated video",
+          "required": false
+        },
+        {
+          "name": "videoPath",
+          "type": "string",
+          "description": "Path to generated video",
+          "required": false
+        },
+        {
+          "name": "metadata",
+          "type": "object",
+          "description": "Video generation metadata",
+          "required": false
+        }
+      ],
+      "metadata": {
+        "position": {"x": 400, "y": 100}
+      }
+    }
+  ],
+  "connections": [
+    {
+      "sourceNodeId": "character_image",
+      "sourceSlot": "imagePath",
+      "targetNodeId": "video_gen",
+      "targetSlot": "characterImage"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "characterPrompt",
+      "type": "string",
+      "description": "Character appearance description",
+      "required": true,
+      "targetNodeId": "character_image",
+      "targetSlot": "prompt",
+      "defaultValue": "Professional business person, 30 years old, confident expression, business casual attire"
+    },
+    {
+      "name": "videoPrompt",
+      "type": "string",
+      "description": "Video action and scene description",
+      "required": true,
+      "targetNodeId": "video_gen",
+      "targetSlot": "prompt",
+      "defaultValue": "Walking confidently in modern office, natural movements, professional demeanor"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "finalVideo",
+      "type": "video",
+      "description": "Generated video with character",
+      "sourceNodeId": "video_gen",
+      "sourceSlot": "videoPath"
+    },
+    {
+      "name": "characterImage",
+      "type": "image",
+      "description": "Character reference image",
+      "sourceNodeId": "character_image",
+      "sourceSlot": "imagePath"
+    }
+  ],
+  "metadata": {
+    "created": "2025-01-06",
+    "author": "SmokeDev",
+    "estimatedCost": 1.22,
+    "estimatedDuration": 180,
+    "tags": ["character", "video", "ultra-realistic", "single"]
+  }
+}

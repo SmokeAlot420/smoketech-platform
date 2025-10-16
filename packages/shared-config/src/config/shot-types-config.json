@@ -1,0 +1,102 @@
+{
+  "shotTypes": [
+    {
+      "id": "full-body-standing",
+      "name": "Full Body Standing",
+      "description": "Full body professional standing shot",
+      "aspectRatio": "9:16",
+      "platform": "TikTok/Instagram Reels",
+      "useGreenScreen": true,
+      "promptModifications": "Full body professional shot standing confidently, complete business outfit visible from head to toe, professional stance with good posture, commanding presence",
+      "technicalRequirements": {
+        "composition": "Full body visible",
+        "posture": "Standing confidently",
+        "framing": "Head to toe",
+        "background": "Chroma key green (#00FF00)"
+      }
+    },
+    {
+      "id": "full-body-seated",
+      "name": "Full Body Seated",
+      "description": "Full body seated at desk or consultation table",
+      "aspectRatio": "16:9",
+      "platform": "YouTube Thumbnails",
+      "useGreenScreen": true,
+      "promptModifications": "Full body shot seated professionally at desk or consultation table, professional attire visible, welcoming posture, hands positioned naturally",
+      "technicalRequirements": {
+        "composition": "Full body seated",
+        "posture": "Professional desk position",
+        "framing": "Includes desk/table",
+        "background": "Chroma key green (#00FF00)"
+      }
+    },
+    {
+      "id": "three-quarter-standing",
+      "name": "Three-Quarter Standing",
+      "description": "Three-quarter body shot from waist up",
+      "aspectRatio": "4:5",
+      "platform": "Instagram Posts/Stories",
+      "useGreenScreen": true,
+      "promptModifications": "Three-quarter shot from waist up, professional posture with hands visible, business attire clearly shown, confident stance",
+      "technicalRequirements": {
+        "composition": "Waist up",
+        "posture": "Standing with hands visible",
+        "framing": "Mid-torso to head",
+        "background": "Chroma key green (#00FF00)"
+      }
+    },
+    {
+      "id": "professional-headshot",
+      "name": "Professional Headshot",
+      "description": "Professional headshot for corporate use",
+      "aspectRatio": "1:1",
+      "platform": "LinkedIn/Corporate Profiles",
+      "useGreenScreen": false,
+      "promptModifications": "Professional headshot from shoulders up, direct eye contact with camera, corporate business attire visible",
+      "technicalRequirements": {
+        "composition": "Shoulders up",
+        "posture": "Direct eye contact",
+        "framing": "Headshot portrait",
+        "background": "Professional neutral gradient"
+      }
+    }
+  ],
+  "commonRequirements": {
+    "resolution": "Ultra-high resolution for professional use",
+    "lighting": "Professional lighting setup enhancing natural features",
+    "focus": "Sharp focus throughout the image",
+    "quality": "Commercial photography quality",
+    "veo3Ready": "Perfect for VEO3 video generation as firstFrame input",
+    "avoidanceList": [
+      "over-processed",
+      "AI-enhanced",
+      "smoothed",
+      "polished",
+      "studio-perfect",
+      "too clean",
+      "artificial lighting",
+      "perfect skin",
+      "professional cinematography",
+      "beautified",
+      "plastic",
+      "synthetic",
+      "fake",
+      "unrealistic",
+      "over-produced",
+      "commercial-grade",
+      "flawless",
+      "studio-quality",
+      "enhanced",
+      "retouched",
+      "airbrushed"
+    ]
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2025-09-30",
+    "totalShots": 4,
+    "defaultGeneration": "all",
+    "estimatedCostPerShot": 0.039,
+    "estimatedTimePerShot": 10
+  }
+}

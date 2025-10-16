@@ -1,0 +1,21 @@
+{
+  "workflowId": "text-to-video-v1",
+  "description": "Generate video directly from text prompt using VEO3",
+  "metadata": {
+    "author": "SmokeDev",
+    "version": "1.0.0",
+    "tags": ["simple", "veo3", "text-to-video"]
+  },
+  "nodes": [
+    {
+      "id": "video_gen_1",
+      "type": "video_generation",
+      "inputs": {
+        "prompt": "A professional woman in business attire explaining insurance benefits in a modern office. She gestures confidently while speaking, with natural lighting from large windows. The office has a clean, professional aesthetic with plants and modern furniture in the background.",
+        "model": "veo3-fast",
+        "duration": 8,
+        "aspectRatio": "16:9"
+      }
+    }
+  ]
+}

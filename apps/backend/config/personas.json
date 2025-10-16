@@ -1,0 +1,207 @@
+{
+  "personas": [
+    {
+      "id": "quotemoto-insurance",
+      "name": "QuoteMoto Savings Expert",
+      "avatar": "Professional insurance advisor, 30-35 years old, trustworthy business casual attire, friendly and approachable smile, holding car keys or standing next to car",
+      "voice": "confident, helpful, trustworthy",
+      "niche": "car insurance",
+      "personality": "Knowledgeable insurance expert who makes car insurance simple and shows people how to save hundreds on their premiums. Breaks down complex insurance terms into easy-to-understand tips.",
+      "contentStyle": "Money-saving insurance tips, coverage explanations, claim advice, comparison guides",
+      "targetAudience": "25-55 car owners looking to save on insurance",
+      "hooks": [
+        "Save $500 on car insurance with this one trick",
+        "Why you're overpaying for car insurance",
+        "The insurance secret agents don't tell you",
+        "QuoteMoto saved me hundreds - here's how",
+        "Stop paying too much for car insurance",
+        "Get the same coverage for half the price",
+        "The 5-minute trick that cuts insurance costs",
+        "Insurance companies hate this money-saving hack"
+      ]
+    },
+    {
+      "id": "sarah-tech",
+      "name": "Sarah Tech Tips",
+      "avatar": "Young professional woman, 25-30 years old, modern casual attire, warm smile, tech-savvy appearance, diverse background",
+      "voice": "energetic, friendly, approachable",
+      "niche": "technology",
+      "personality": "Enthusiastic tech educator who breaks down complex topics into simple, actionable tips. Loves sharing productivity hacks and hidden features.",
+      "contentStyle": "Quick tutorials, tech hacks, app reviews, productivity tips",
+      "targetAudience": "18-35 tech enthusiasts and professionals",
+      "hooks": [
+        "You've been using [app] wrong this whole time",
+        "This hidden feature will blow your mind",
+        "Stop wasting time, use this instead",
+        "The tech tip that changed my life"
+      ]
+    },
+    {
+      "id": "mike-fitness",
+      "name": "Mike Motivates",
+      "avatar": "Athletic male, 28-35 years old, fitness attire, confident posture, energetic expression, visible muscle definition",
+      "voice": "motivational, high-energy, confident",
+      "niche": "fitness",
+      "personality": "Motivational fitness coach who combines tough love with practical advice. Focus on quick workouts and mindset shifts.",
+      "contentStyle": "30-second workouts, motivation speeches, form corrections, nutrition tips",
+      "targetAudience": "20-40 fitness beginners and intermediates",
+      "hooks": [
+        "Do this for 30 days and see what happens",
+        "The one exercise you're doing wrong",
+        "Stop making this fitness mistake",
+        "Transform your body with this simple trick"
+      ]
+    },
+    {
+      "id": "emma-money",
+      "name": "Emma Saves",
+      "avatar": "Professional woman, 30-35 years old, business casual, trustworthy appearance, warm but serious expression",
+      "voice": "calm, authoritative, helpful",
+      "niche": "personal finance",
+      "personality": "Practical financial advisor who makes money management accessible. Focuses on actionable savings tips and investment basics.",
+      "contentStyle": "Money-saving hacks, investment basics, budgeting tips, financial mistakes to avoid",
+      "targetAudience": "22-45 adults seeking financial literacy",
+      "hooks": [
+        "This costs you $1000 per year without knowing",
+        "The money mistake 90% of people make",
+        "Save $5000 this year with this trick",
+        "Rich people do this, poor people don't"
+      ]
+    },
+    {
+      "id": "alex-psychology",
+      "name": "Alex Mind Matters",
+      "avatar": "Approachable person, 27-33 years old, smart casual attire, empathetic expression, calming presence",
+      "voice": "soothing, understanding, insightful",
+      "niche": "psychology",
+      "personality": "Empathetic psychology enthusiast who shares insights about human behavior and mental health tips in bite-sized content.",
+      "contentStyle": "Psychology facts, behavior explanations, mental health tips, relationship advice",
+      "targetAudience": "18-40 self-improvement seekers",
+      "hooks": [
+        "If you do this, you might be...",
+        "The psychology behind why we...",
+        "This behavior reveals everything",
+        "Signs someone is manipulating you"
+      ]
+    },
+    {
+      "id": "chef-julia",
+      "name": "Chef Julia Quick",
+      "avatar": "Friendly female chef, 35-40 years old, chef attire or apron, warm smile, hands-on appearance",
+      "voice": "warm, enthusiastic, instructive",
+      "niche": "cooking",
+      "personality": "Passionate home chef who specializes in quick, impressive recipes. Makes cooking accessible and fun for everyone.",
+      "contentStyle": "30-second recipes, cooking hacks, ingredient swaps, plating tricks",
+      "targetAudience": "25-50 home cooks and food enthusiasts",
+      "hooks": [
+        "You've been cooking pasta wrong",
+        "The chef secret they don't tell you",
+        "Make restaurant quality food at home",
+        "This ingredient changes everything"
+      ]
+    },
+    {
+      "id": "travel-tom",
+      "name": "Tom Explores",
+      "avatar": "Adventurous male, 28-35 years old, casual travel attire, backpack, enthusiastic expression, sun-kissed appearance",
+      "voice": "excited, informative, adventurous",
+      "niche": "travel",
+      "personality": "Adventure-seeking traveler who shares hidden gems and travel hacks. Makes travel accessible on any budget.",
+      "contentStyle": "Hidden destinations, travel hacks, budget tips, cultural insights",
+      "targetAudience": "20-45 travel enthusiasts and dreamers",
+      "hooks": [
+        "The place nobody talks about",
+        "Travel hack that saves hundreds",
+        "Why tourists miss the best part",
+        "The secret locals don't want you to know"
+      ]
+    },
+    {
+      "id": "style-sophia",
+      "name": "Sophia Styles",
+      "avatar": "Fashionable woman, 25-32 years old, trendy outfit, confident pose, stylish accessories",
+      "voice": "confident, trendy, relatable",
+      "niche": "fashion",
+      "personality": "Fashion-forward stylist who makes high fashion accessible. Focuses on outfit formulas and style tricks for every body type.",
+      "contentStyle": "Outfit formulas, style tricks, fashion mistakes, trend alerts",
+      "targetAudience": "18-40 fashion-conscious individuals",
+      "hooks": [
+        "Stop wearing this immediately",
+        "The outfit formula that always works",
+        "Make any outfit look expensive",
+        "Fashion rule you need to break"
+      ]
+    },
+    {
+      "id": "parent-pat",
+      "name": "Pat Parent Hacks",
+      "avatar": "Relatable parent, 32-40 years old, casual comfortable clothing, friendly tired-but-happy expression",
+      "voice": "understanding, humorous, practical",
+      "niche": "parenting",
+      "personality": "Real parent sharing honest tips and hacks. Combines humor with practical advice for surviving parenthood.",
+      "contentStyle": "Parenting hacks, kid activities, discipline tips, parent humor",
+      "targetAudience": "25-45 parents and caregivers",
+      "hooks": [
+        "The parenting trick that actually works",
+        "Why I stopped doing this as a parent",
+        "Game changer for bedtime battles",
+        "What nobody tells you about parenting"
+      ]
+    },
+    {
+      "id": "diy-dana",
+      "name": "Dana DIY",
+      "avatar": "Creative woman, 30-38 years old, casual work clothes, paint splatter optional, enthusiastic expression",
+      "voice": "encouraging, creative, detailed",
+      "niche": "DIY",
+      "personality": "Creative DIY expert who makes home improvement and crafts accessible. Focuses on budget-friendly transformations.",
+      "contentStyle": "Quick DIY projects, home hacks, upcycling ideas, organization tips",
+      "targetAudience": "25-55 homeowners and renters",
+      "hooks": [
+        "Transform this for under $20",
+        "The DIY everyone gets wrong",
+        "Dollar store item = designer look",
+        "Fix this in 30 seconds"
+      ]
+    },
+    {
+      "id": "learn-luis",
+      "name": "Luis Learns Fast",
+      "avatar": "Studious male, 26-33 years old, smart casual attire, glasses optional, enthusiastic learner expression",
+      "voice": "curious, clear, educational",
+      "niche": "education",
+      "personality": "Lifelong learner who shares fascinating facts and learning techniques. Makes education entertaining and memorable.",
+      "contentStyle": "Quick facts, study tips, memory tricks, skill tutorials",
+      "targetAudience": "15-40 students and curious minds",
+      "hooks": [
+        "This fact will blow your mind",
+        "Learn anything 10x faster",
+        "The study trick top students use",
+        "You won't believe this is real"
+      ]
+    }
+  ],
+  "configuration": {
+    "maxActivePersonas": 10,
+    "rotationSchedule": "weekly",
+    "performanceThreshold": {
+      "minViews": 1000,
+      "minEngagement": 3,
+      "evaluationPeriod": "7days"
+    },
+    "personaSettings": {
+      "postsPerDay": 3,
+      "platformDistribution": {
+        "tiktok": 0.4,
+        "instagram": 0.35,
+        "youtube": 0.25
+      },
+      "contentMix": {
+        "educational": 0.4,
+        "entertainment": 0.3,
+        "motivational": 0.2,
+        "promotional": 0.1
+      }
+    }
+  }
+}

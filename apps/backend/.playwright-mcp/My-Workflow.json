@@ -1,0 +1,16 @@
+{
+  "workflowId": "My Workflow",
+  "description": "Visual workflow created with SmokeTech Studio",
+  "nodes": [
+    {
+      "id": "characterImage_1",
+      "type": "characterImage",
+      "inputs": {
+        "model": "Imagen 3",
+        "characterPrompt": "Professional contractor, 35 years old, wearing a hard hat and safety vest"
+      },
+      "outputs": []
+    }
+  ],
+  "edges": []
+}

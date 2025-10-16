@@ -1,0 +1,282 @@
+{
+  "id": "series-video-v1",
+  "name": "Series Video Generation",
+  "version": "1.0.0",
+  "description": "Generate multiple videos with the same character for series consistency",
+  "executionMode": "sequential",
+  "nodes": [
+    {
+      "id": "character_image",
+      "type": "image_generator",
+      "label": "Generate Character (Reused)",
+      "params": {
+        "model": "nanobana",
+        "temperature": 0.3,
+        "count": 1,
+        "quality": "hd",
+        "aspectRatio": "1:1"
+      },
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "string",
+          "description": "Character description (used for all videos)",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "image",
+          "description": "Generated character image",
+          "required": false
+        },
+        {
+          "name": "imagePath",
+          "type": "string",
+          "description": "Path to generated image",
+          "required": false
+        },
+        {
+          "name": "metadata",
+          "type": "object",
+          "description": "Generation metadata",
+          "required": false
+        }
+      ],
+      "metadata": {
+        "position": {"x": 100, "y": 200}
+      }
+    },
+    {
+      "id": "video_gen_1",
+      "type": "video_generator",
+      "label": "Video 1",
+      "params": {
+        "model": "veo3-fast",
+        "duration": 8,
+        "aspectRatio": "16:9",
+        "quality": "high",
+        "count": 1,
+        "enableSound": true,
+        "enablePromptRewriting": false
+      },
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "string",
+          "description": "Video 1 action prompt",
+          "required": true
+        },
+        {
+          "name": "characterImage",
+          "type": "string",
+          "description": "Character image path",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "video",
+          "description": "Generated video 1",
+          "required": false
+        },
+        {
+          "name": "videoPath",
+          "type": "string",
+          "description": "Path to video 1",
+          "required": false
+        }
+      ],
+      "metadata": {
+        "position": {"x": 400, "y": 100}
+      }
+    },
+    {
+      "id": "video_gen_2",
+      "type": "video_generator",
+      "label": "Video 2",
+      "params": {
+        "model": "veo3-fast",
+        "duration": 8,
+        "aspectRatio": "16:9",
+        "quality": "high",
+        "count": 1,
+        "enableSound": true,
+        "enablePromptRewriting": false
+      },
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "string",
+          "description": "Video 2 action prompt",
+          "required": true
+        },
+        {
+          "name": "characterImage",
+          "type": "string",
+          "description": "Character image path",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "video",
+          "description": "Generated video 2",
+          "required": false
+        },
+        {
+          "name": "videoPath",
+          "type": "string",
+          "description": "Path to video 2",
+          "required": false
+        }
+      ],
+      "metadata": {
+        "position": {"x": 400, "y": 200}
+      }
+    },
+    {
+      "id": "video_gen_3",
+      "type": "video_generator",
+      "label": "Video 3",
+      "params": {
+        "model": "veo3-fast",
+        "duration": 8,
+        "aspectRatio": "16:9",
+        "quality": "high",
+        "count": 1,
+        "enableSound": true,
+        "enablePromptRewriting": false
+      },
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "string",
+          "description": "Video 3 action prompt",
+          "required": true
+        },
+        {
+          "name": "characterImage",
+          "type": "string",
+          "description": "Character image path",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "video",
+          "description": "Generated video 3",
+          "required": false
+        },
+        {
+          "name": "videoPath",
+          "type": "string",
+          "description": "Path to video 3",
+          "required": false
+        }
+      ],
+      "metadata": {
+        "position": {"x": 400, "y": 300}
+      }
+    }
+  ],
+  "connections": [
+    {
+      "sourceNodeId": "character_image",
+      "sourceSlot": "imagePath",
+      "targetNodeId": "video_gen_1",
+      "targetSlot": "characterImage"
+    },
+    {
+      "sourceNodeId": "character_image",
+      "sourceSlot": "imagePath",
+      "targetNodeId": "video_gen_2",
+      "targetSlot": "characterImage"
+    },
+    {
+      "sourceNodeId": "character_image",
+      "sourceSlot": "imagePath",
+      "targetNodeId": "video_gen_3",
+      "targetSlot": "characterImage"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "characterPrompt",
+      "type": "string",
+      "description": "Character appearance (used for all videos)",
+      "required": true,
+      "targetNodeId": "character_image",
+      "targetSlot": "prompt",
+      "defaultValue": "Professional business person, 30 years old, confident expression, business casual attire"
+    },
+    {
+      "name": "videoPrompt1",
+      "type": "string",
+      "description": "Video 1 action and scene",
+      "required": true,
+      "targetNodeId": "video_gen_1",
+      "targetSlot": "prompt",
+      "defaultValue": "Introducing product with enthusiasm, natural gestures, modern office background"
+    },
+    {
+      "name": "videoPrompt2",
+      "type": "string",
+      "description": "Video 2 action and scene",
+      "required": true,
+      "targetNodeId": "video_gen_2",
+      "targetSlot": "prompt",
+      "defaultValue": "Explaining features on whiteboard, pointing at key details, professional demeanor"
+    },
+    {
+      "name": "videoPrompt3",
+      "type": "string",
+      "description": "Video 3 action and scene",
+      "required": true,
+      "targetNodeId": "video_gen_3",
+      "targetSlot": "prompt",
+      "defaultValue": "Closing statement with smile, confident body language, call to action"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "characterImage",
+      "type": "image",
+      "description": "Shared character reference",
+      "sourceNodeId": "character_image",
+      "sourceSlot": "imagePath"
+    },
+    {
+      "name": "video1",
+      "type": "video",
+      "description": "First video in series",
+      "sourceNodeId": "video_gen_1",
+      "sourceSlot": "videoPath"
+    },
+    {
+      "name": "video2",
+      "type": "video",
+      "description": "Second video in series",
+      "sourceNodeId": "video_gen_2",
+      "sourceSlot": "videoPath"
+    },
+    {
+      "name": "video3",
+      "type": "video",
+      "description": "Third video in series",
+      "sourceNodeId": "video_gen_3",
+      "sourceSlot": "videoPath"
+    }
+  ],
+  "metadata": {
+    "created": "2025-01-06",
+    "author": "SmokeDev",
+    "estimatedCost": 3.62,
+    "estimatedDuration": 540,
+    "tags": ["series", "character-consistency", "multi-video", "batch"]
+  }
+}

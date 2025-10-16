@@ -1,0 +1,522 @@
+{
+  "viralSeries": [
+    {
+      "id": "insurance-savings",
+      "name": "Insurance Money Saver",
+      "format": "comparison",
+      "duration": 7,
+      "hooks": [
+        "Your insurance is ripping you off",
+        "Save $500 in 5 minutes",
+        "The QuoteMoto difference",
+        "Why pay more for the same coverage?",
+        "Insurance companies don't want you to know this"
+      ],
+      "structure": {
+        "duration": 7,
+        "scenes": [
+          {
+            "type": "intro",
+            "duration": 2,
+            "elements": ["shocking_price", "comparison_setup", "quotemoto_logo"]
+          },
+          {
+            "type": "main",
+            "duration": 4,
+            "elements": ["price_comparison", "coverage_breakdown", "savings_calculator", "testimonial"]
+          },
+          {
+            "type": "outro",
+            "duration": 1,
+            "elements": ["total_savings", "call_to_action", "quotemoto_website"]
+          }
+        ],
+        "musicStyle": "upbeat-corporate",
+        "textOverlays": true
+      },
+      "variations": {
+        "topics": ["comprehensive", "liability", "collision", "young_drivers", "safe_drivers"],
+        "styles": ["comparison", "testimonial", "educational", "shocking"],
+        "angles": ["monthly_savings", "annual_savings", "coverage_quality", "claim_speed"]
+      },
+      "viralFactors": {
+        "shareability": 9,
+        "curiosity": 10,
+        "emotional": 7,
+        "practical": 10
+      }
+    },
+    {
+      "id": "before-after",
+      "name": "Before & After Transformation",
+      "format": "split-screen",
+      "duration": 8,
+      "hooks": [
+        "Day 1 vs Day 30",
+        "This changed everything",
+        "You won't believe the difference",
+        "The results speak for themselves"
+      ],
+      "structure": {
+        "duration": 8,
+        "scenes": [
+          {
+            "type": "intro",
+            "duration": 2,
+            "elements": ["hook_text", "before_image", "dramatic_music"]
+          },
+          {
+            "type": "main",
+            "duration": 4,
+            "elements": ["transformation_montage", "key_steps", "progress_indicators"]
+          },
+          {
+            "type": "outro",
+            "duration": 2,
+            "elements": ["final_result", "call_to_action", "follow_prompt"]
+          }
+        ],
+        "musicStyle": "uplifting-electronic",
+        "textOverlays": true
+      },
+      "variations": {
+        "topics": ["fitness", "skincare", "organization", "skills", "habits"],
+        "styles": ["dramatic", "inspiring", "shocking", "relatable"],
+        "angles": ["30-day", "1-week", "instant", "1-year"]
+      },
+      "viralFactors": {
+        "shareability": 9,
+        "curiosity": 10,
+        "emotional": 8,
+        "practical": 7
+      }
+    },
+    {
+      "id": "hidden-feature",
+      "name": "Hidden Feature Reveal",
+      "format": "tutorial",
+      "duration": 7,
+      "hooks": [
+        "You've been using it wrong",
+        "The feature nobody knows about",
+        "This will save you hours",
+        "Why didn't anyone tell me this"
+      ],
+      "structure": {
+        "duration": 7,
+        "scenes": [
+          {
+            "type": "intro",
+            "duration": 2,
+            "elements": ["problem_statement", "teaser", "quick_flash"]
+          },
+          {
+            "type": "main",
+            "duration": 4,
+            "elements": ["step_by_step", "screen_recording", "highlight_arrows"]
+          },
+          {
+            "type": "outro",
+            "duration": 1,
+            "elements": ["summary", "save_reminder", "more_tips_tease"]
+          }
+        ],
+        "musicStyle": "tech-minimal",
+        "textOverlays": true
+      },
+      "variations": {
+        "topics": ["iPhone", "Android", "Windows", "Apps", "Websites"],
+        "styles": ["quick", "detailed", "comparison", "myth-busting"],
+        "angles": ["productivity", "privacy", "customization", "efficiency"]
+      },
+      "viralFactors": {
+        "shareability": 10,
+        "curiosity": 9,
+        "emotional": 5,
+        "practical": 10
+      }
+    },
+    {
+      "id": "common-mistake",
+      "name": "Common Mistake Correction",
+      "format": "educational",
+      "duration": 8,
+      "hooks": [
+        "90% of people do this wrong",
+        "Stop making this mistake",
+        "This is why it's not working",
+        "The mistake that costs you"
+      ],
+      "structure": {
+        "duration": 8,
+        "scenes": [
+          {
+            "type": "intro",
+            "duration": 2,
+            "elements": ["mistake_demonstration", "shock_value", "relatability"]
+          },
+          {
+            "type": "main",
+            "duration": 5,
+            "elements": ["explanation", "correct_method", "comparison"]
+          },
+          {
+            "type": "outro",
+            "duration": 1,
+            "elements": ["recap", "confidence_boost", "share_prompt"]
+          }
+        ],
+        "musicStyle": "dramatic-reveal",
+        "textOverlays": true
+      },
+      "variations": {
+        "topics": ["cooking", "exercise", "money", "relationships", "work"],
+        "styles": ["gentle", "urgent", "humorous", "serious"],
+        "angles": ["safety", "efficiency", "cost", "results"]
+      },
+      "viralFactors": {
+        "shareability": 9,
+        "curiosity": 8,
+        "emotional": 7,
+        "practical": 9
+      }
+    },
+    {
+      "id": "quick-hack",
+      "name": "30-Second Life Hack",
+      "format": "quick-tip",
+      "duration": 6,
+      "hooks": [
+        "Do this in 30 seconds",
+        "The easiest trick ever",
+        "Why didn't I think of this",
+        "Game changer alert"
+      ],
+      "structure": {
+        "duration": 6,
+        "scenes": [
+          {
+            "type": "intro",
+            "duration": 1,
+            "elements": ["problem_quick", "promise", "countdown_timer"]
+          },
+          {
+            "type": "main",
+            "duration": 4,
+            "elements": ["demonstration", "real_time", "close_ups"]
+          },
+          {
+            "type": "outro",
+            "duration": 1,
+            "elements": ["result", "satisfaction", "try_it_now"]
+          }
+        ],
+        "musicStyle": "upbeat-pop",
+        "textOverlays": true
+      },
+      "variations": {
+        "topics": ["cleaning", "organizing", "cooking", "tech", "beauty"],
+        "styles": ["speed", "simple", "clever", "unexpected"],
+        "angles": ["time-saving", "money-saving", "effort-saving", "space-saving"]
+      },
+      "viralFactors": {
+        "shareability": 10,
+        "curiosity": 7,
+        "emotional": 6,
+        "practical": 10
+      }
+    },
+    {
+      "id": "challenge-trend",
+      "name": "Viral Challenge",
+      "format": "challenge",
+      "duration": 8,
+      "hooks": [
+        "Can you do this?",
+        "I bet you can't",
+        "Challenge accepted",
+        "Tag someone who needs this"
+      ],
+      "structure": {
+        "duration": 8,
+        "scenes": [
+          {
+            "type": "intro",
+            "duration": 2,
+            "elements": ["challenge_setup", "rules", "excitement_build"]
+          },
+          {
+            "type": "main",
+            "duration": 5,
+            "elements": ["attempt", "struggle_moments", "success_fail"]
+          },
+          {
+            "type": "outro",
+            "duration": 1,
+            "elements": ["result", "challenge_others", "hashtag"]
+          }
+        ],
+        "musicStyle": "trending-audio",
+        "textOverlays": true
+      },
+      "variations": {
+        "topics": ["fitness", "mental", "creative", "skills", "social"],
+        "styles": ["competitive", "fun", "impossible", "wholesome"],
+        "angles": ["solo", "group", "timed", "progressive"]
+      },
+      "viralFactors": {
+        "shareability": 10,
+        "curiosity": 8,
+        "emotional": 8,
+        "practical": 5
+      }
+    },
+    {
+      "id": "comparison",
+      "name": "This vs That",
+      "format": "comparison",
+      "duration": 7,
+      "hooks": [
+        "Which one are you?",
+        "The difference is shocking",
+        "Team A or Team B?",
+        "You're one of these"
+      ],
+      "structure": {
+        "duration": 7,
+        "scenes": [
+          {
+            "type": "intro",
+            "duration": 2,
+            "elements": ["split_screen", "versus_graphic", "question_pose"]
+          },
+          {
+            "type": "main",
+            "duration": 4,
+            "elements": ["side_by_side", "alternating_points", "visual_differences"]
+          },
+          {
+            "type": "outro",
+            "duration": 1,
+            "elements": ["conclusion", "vote_prompt", "comment_bait"]
+          }
+        ],
+        "musicStyle": "versus-battle",
+        "textOverlays": true
+      },
+      "variations": {
+        "topics": ["personality", "lifestyle", "products", "methods", "choices"],
+        "styles": ["humorous", "serious", "relatable", "controversial"],
+        "angles": ["cost", "time", "effectiveness", "preference"]
+      },
+      "viralFactors": {
+        "shareability": 9,
+        "curiosity": 8,
+        "emotional": 7,
+        "practical": 6
+      }
+    },
+    {
+      "id": "story-time",
+      "name": "Mini Story Time",
+      "format": "narrative",
+      "duration": 8,
+      "hooks": [
+        "You won't believe what happened",
+        "Story time...",
+        "This actually happened",
+        "Let me tell you about"
+      ],
+      "structure": {
+        "duration": 8,
+        "scenes": [
+          {
+            "type": "intro",
+            "duration": 2,
+            "elements": ["hook_statement", "context_setting", "intrigue"]
+          },
+          {
+            "type": "main",
+            "duration": 5,
+            "elements": ["story_progression", "plot_twist", "emotional_beats"]
+          },
+          {
+            "type": "outro",
+            "duration": 1,
+            "elements": ["conclusion", "lesson", "relatability_check"]
+          }
+        ],
+        "musicStyle": "storytelling-ambient",
+        "textOverlays": true
+      },
+      "variations": {
+        "topics": ["workplace", "relationship", "travel", "childhood", "recent"],
+        "styles": ["funny", "inspiring", "cautionary", "heartwarming"],
+        "angles": ["personal", "witnessed", "heard", "historical"]
+      },
+      "viralFactors": {
+        "shareability": 8,
+        "curiosity": 10,
+        "emotional": 9,
+        "practical": 4
+      }
+    },
+    {
+      "id": "myth-buster",
+      "name": "Myth vs Reality",
+      "format": "educational",
+      "duration": 7,
+      "hooks": [
+        "This is actually a myth",
+        "What they don't tell you",
+        "The truth about...",
+        "Stop believing this"
+      ],
+      "structure": {
+        "duration": 7,
+        "scenes": [
+          {
+            "type": "intro",
+            "duration": 2,
+            "elements": ["myth_statement", "shock_factor", "credibility"]
+          },
+          {
+            "type": "main",
+            "duration": 4,
+            "elements": ["evidence", "expert_opinion", "demonstration"]
+          },
+          {
+            "type": "outro",
+            "duration": 1,
+            "elements": ["truth_reveal", "mind_blown", "share_knowledge"]
+          }
+        ],
+        "musicStyle": "investigative",
+        "textOverlays": true
+      },
+      "variations": {
+        "topics": ["health", "history", "science", "business", "social"],
+        "styles": ["scientific", "casual", "dramatic", "humorous"],
+        "angles": ["dangerous", "costly", "ineffective", "outdated"]
+      },
+      "viralFactors": {
+        "shareability": 9,
+        "curiosity": 10,
+        "emotional": 6,
+        "practical": 8
+      }
+    },
+    {
+      "id": "countdown",
+      "name": "Top 3 Countdown",
+      "format": "listicle",
+      "duration": 8,
+      "hooks": [
+        "Top 3 things you need",
+        "3 secrets nobody tells you",
+        "The only 3 that matter",
+        "3 game changers"
+      ],
+      "structure": {
+        "duration": 8,
+        "scenes": [
+          {
+            "type": "intro",
+            "duration": 1,
+            "elements": ["countdown_graphic", "topic_intro", "value_promise"]
+          },
+          {
+            "type": "main",
+            "duration": 6,
+            "elements": ["number_3", "number_2", "number_1", "quick_examples"]
+          },
+          {
+            "type": "outro",
+            "duration": 1,
+            "elements": ["recap", "save_prompt", "bonus_tease"]
+          }
+        ],
+        "musicStyle": "countdown-suspense",
+        "textOverlays": true
+      },
+      "variations": {
+        "topics": ["tips", "products", "mistakes", "habits", "tools"],
+        "styles": ["quick", "detailed", "surprising", "essential"],
+        "angles": ["beginner", "advanced", "budget", "premium"]
+      },
+      "viralFactors": {
+        "shareability": 9,
+        "curiosity": 8,
+        "emotional": 5,
+        "practical": 9
+      }
+    },
+    {
+      "id": "reaction",
+      "name": "Reaction & Response",
+      "format": "reaction",
+      "duration": 6,
+      "hooks": [
+        "My reaction to...",
+        "Can we talk about this?",
+        "This needs to be said",
+        "My honest thoughts"
+      ],
+      "structure": {
+        "duration": 6,
+        "scenes": [
+          {
+            "type": "intro",
+            "duration": 1,
+            "elements": ["context", "initial_reaction", "credibility"]
+          },
+          {
+            "type": "main",
+            "duration": 4,
+            "elements": ["point_by_point", "facial_expressions", "commentary"]
+          },
+          {
+            "type": "outro",
+            "duration": 1,
+            "elements": ["final_thoughts", "discussion_prompt", "follow_for_more"]
+          }
+        ],
+        "musicStyle": "commentary-background",
+        "textOverlays": true
+      },
+      "variations": {
+        "topics": ["trends", "news", "products", "opinions", "content"],
+        "styles": ["supportive", "critical", "analytical", "humorous"],
+        "angles": ["expert", "consumer", "observer", "participant"]
+      },
+      "viralFactors": {
+        "shareability": 8,
+        "curiosity": 7,
+        "emotional": 8,
+        "practical": 5
+      }
+    }
+  ],
+  "configuration": {
+    "seriesRotation": "daily",
+    "performanceTracking": {
+      "metricsWindow": "7days",
+      "minimumAttempts": 5,
+      "successThreshold": {
+        "views": 10000,
+        "engagement": 5,
+        "shares": 100
+      }
+    },
+    "contentStrategy": {
+      "newSeriesTestPeriod": "3days",
+      "winnerReplicationFactor": 5,
+      "underperformerRemoval": "14days"
+    },
+    "optimization": {
+      "a/b_testing": true,
+      "multivariate": true,
+      "factors": ["hook", "music", "duration", "style"]
+    }
+  }
+}

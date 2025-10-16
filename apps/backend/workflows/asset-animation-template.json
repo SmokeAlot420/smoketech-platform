@@ -1,0 +1,161 @@
+{
+  "id": "asset-animation-v1",
+  "name": "Asset Animation",
+  "version": "1.0.0",
+  "description": "Generate and animate non-human assets (products, logos, objects)",
+  "executionMode": "sequential",
+  "nodes": [
+    {
+      "id": "asset_image",
+      "type": "image_generator",
+      "label": "Generate Asset Image",
+      "params": {
+        "model": "midjourney",
+        "temperature": 0.4,
+        "count": 1,
+        "quality": "hd",
+        "aspectRatio": "1:1"
+      },
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "string",
+          "description": "Asset description (product, logo, object)",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "image",
+          "description": "Generated asset image",
+          "required": false
+        },
+        {
+          "name": "imagePath",
+          "type": "string",
+          "description": "Path to generated asset",
+          "required": false
+        },
+        {
+          "name": "metadata",
+          "type": "object",
+          "description": "Generation metadata",
+          "required": false
+        }
+      ],
+      "metadata": {
+        "position": {"x": 100, "y": 150}
+      }
+    },
+    {
+      "id": "video_animation",
+      "type": "video_generator",
+      "label": "Animate Asset",
+      "params": {
+        "model": "veo3-fast",
+        "duration": 8,
+        "aspectRatio": "16:9",
+        "quality": "high",
+        "count": 1,
+        "enableSound": false,
+        "enablePromptRewriting": true
+      },
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "string",
+          "description": "Animation description",
+          "required": true
+        },
+        {
+          "name": "characterImage",
+          "type": "string",
+          "description": "Asset image to animate",
+          "required": false
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "video",
+          "description": "Animated asset video",
+          "required": false
+        },
+        {
+          "name": "videoPath",
+          "type": "string",
+          "description": "Path to animated video",
+          "required": false
+        },
+        {
+          "name": "metadata",
+          "type": "object",
+          "description": "Animation metadata",
+          "required": false
+        }
+      ],
+      "metadata": {
+        "position": {"x": 400, "y": 150}
+      }
+    }
+  ],
+  "connections": [
+    {
+      "sourceNodeId": "asset_image",
+      "sourceSlot": "imagePath",
+      "targetNodeId": "video_animation",
+      "targetSlot": "characterImage"
+    }
+  ],
+  "inputs": [
+    {
+      "name": "assetPrompt",
+      "type": "string",
+      "description": "Asset appearance (product, logo, object)",
+      "required": true,
+      "targetNodeId": "asset_image",
+      "targetSlot": "prompt",
+      "defaultValue": "Sleek modern smartphone, metallic silver finish, minimalist design, studio lighting, professional product photography, white background"
+    },
+    {
+      "name": "animationPrompt",
+      "type": "string",
+      "description": "Animation behavior and movement",
+      "required": true,
+      "targetNodeId": "video_animation",
+      "targetSlot": "prompt",
+      "defaultValue": "Slowly rotating 360 degrees on pedestal, dramatic lighting sweeping across surface, highlighting metallic reflections, cinematic product reveal"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "assetImage",
+      "type": "image",
+      "description": "Generated asset still image",
+      "sourceNodeId": "asset_image",
+      "sourceSlot": "imagePath"
+    },
+    {
+      "name": "animatedVideo",
+      "type": "video",
+      "description": "Animated asset video",
+      "sourceNodeId": "video_animation",
+      "sourceSlot": "videoPath"
+    }
+  ],
+  "metadata": {
+    "created": "2025-01-06",
+    "author": "SmokeDev",
+    "estimatedCost": 1.28,
+    "estimatedDuration": 150,
+    "tags": ["asset", "product", "animation", "commercial", "branding"],
+    "useCases": [
+      "Product reveals",
+      "Logo animations",
+      "Brand cinematics",
+      "E-commerce videos",
+      "Social media ads"
+    ]
+  }
+}

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viral AI Content Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .status-bar {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .status-item {
+            flex: 1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .status-item.paused {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .status-item.running {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .metric-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .metric-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            transition: width 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .personas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .persona-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .persona-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .controls {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+            color: white;
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .viral-feed {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .viral-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .viral-item:last-child {
+            border-bottom: none;
+        }
+
+        .viral-score {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .viral-details {
+            flex: 1;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0,0,0,0.1);
+            border-radius: 50%;
+            border-top-color: #667eea;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .scale-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        input[type="range"] {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Viral AI Content System</h1>
+            <div class="status-bar">
+                <div class="status-item running" id="status">
+                    <strong>Status:</strong> <span id="statusText">Initializing...</span>
+                </div>
+                <div class="status-item">
+                    <strong>Batch:</strong> <span id="batchNumber">0</span>
+                </div>
+                <div class="status-item">
+                    <strong>Active Personas:</strong> <span id="activePersonas">0</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="controls">
+            <button class="btn-success" onclick="startWorkflow()">▶️ Start</button>
+            <button class="btn-danger" onclick="pauseWorkflow()">⏸️ Pause</button>
+            <button class="btn-primary" onclick="resumeWorkflow()">▶️ Resume</button>
+            <button class="btn-primary" onclick="refreshMetrics()">🔄 Refresh</button>
+            <div class="scale-control">
+                <label>Scale: <span id="scaleValue">1.0</span>x</label>
+                <input type="range" id="scaleSlider" min="0.1" max="10" step="0.1" value="1" onchange="updateScale(this.value)">
+            </div>
+        </div>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <h3>📹 Videos Generated</h3>
+                <div class="metric-value" id="videosGenerated">0</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="videoProgress" style="width: 0%">0%</div>
+                </div>
+                <div class="metric-label">Target: 200 videos/day</div>
+            </div>
+
+            <div class="metric-card">
+                <h3>👀 Total Views</h3>
+                <div class="metric-value" id="totalViews">0</div>
+                <div class="metric-label">Across all platforms</div>
+            </div>
+
+            <div class="metric-card">
+                <h3>🔥 Viral Hits</h3>
+                <div class="metric-value" id="viralHits">0</div>
+                <div class="metric-label">Videos > 100k views</div>
+            </div>
+
+            <div class="metric-card">
+                <h3>💰 Revenue</h3>
+                <div class="metric-value">$<span id="revenue">0</span></div>
+                <div class="metric-label">ROI: <span id="roi">0%</span></div>
+            </div>
+
+            <div class="metric-card">
+                <h3>📊 Engagement Rate</h3>
+                <div class="metric-value"><span id="engagement">0</span>%</div>
+                <div class="metric-label">Likes + Comments + Shares</div>
+            </div>
+
+            <div class="metric-card">
+                <h3>⚡ Processing</h3>
+                <div class="metric-value"><span id="processing">0</span></div>
+                <div class="metric-label">Videos in queue</div>
+            </div>
+        </div>
+
+        <div class="metric-card">
+            <h3>🎭 Active Personas</h3>
+            <div class="personas-grid" id="personasGrid">
+                <!-- Personas will be added dynamically -->
+            </div>
+        </div>
+
+        <div class="viral-feed">
+            <h3>🏆 Top Performing Content</h3>
+            <div id="viralFeed">
+                <div class="viral-item">
+                    <div class="loading"></div>
+                    <div class="viral-details">
+                        <strong>Loading viral content...</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mock data for demonstration
+        let metrics = {
+            totalVideosGenerated: 0,
+            totalViews: 0,
+            viralHits: 0,
+            averageEngagement: 0,
+            revenue: 0,
+            costs: 50,
+            isRunning: false,
+            isPaused: false,
+            currentBatch: 0,
+            activePersonas: 3
+        };
+
+        const personas = [
+            { id: 'sarah-tech', name: 'Sarah Tech Tips', icon: '💻' },
+            { id: 'mike-fitness', name: 'Mike Motivates', icon: '💪' },
+            { id: 'emma-money', name: 'Emma Saves', icon: '💰' },
+            { id: 'alex-psychology', name: 'Alex Mind', icon: '🧠' },
+            { id: 'chef-julia', name: 'Chef Julia', icon: '👩‍🍳' }
+        ];
+
+        // Initialize personas
+        function initPersonas() {
+            const grid = document.getElementById('personasGrid');
+            grid.innerHTML = personas.slice(0, metrics.activePersonas).map(p => `
+                <div class="persona-card">
+                    <div class="persona-avatar">${p.icon}</div>
+                    <strong>${p.name}</strong>
+                    <div style="margin-top: 5px; color: #666; font-size: 0.9rem;">
+                        ${Math.floor(Math.random() * 10) + 5} videos today
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Update metrics display
+        function updateDisplay() {
+            document.getElementById('videosGenerated').textContent = metrics.totalVideosGenerated.toLocaleString();
+            document.getElementById('totalViews').textContent = metrics.totalViews.toLocaleString();
+            document.getElementById('viralHits').textContent = metrics.viralHits;
+            document.getElementById('revenue').textContent = metrics.revenue.toFixed(2);
+            document.getElementById('engagement').textContent = metrics.averageEngagement.toFixed(2);
+            document.getElementById('processing').textContent = Math.floor(Math.random() * 20);
+            document.getElementById('batchNumber').textContent = metrics.currentBatch;
+            document.getElementById('activePersonas').textContent = metrics.activePersonas;
+
+            // Update ROI
+            const roi = metrics.costs > 0 ? ((metrics.revenue / metrics.costs - 1) * 100).toFixed(1) : 0;
+            document.getElementById('roi').textContent = roi + '%';
+
+            // Update progress bar
+            const progress = Math.min((metrics.totalVideosGenerated / 200) * 100, 100);
+            document.getElementById('videoProgress').style.width = progress + '%';
+            document.getElementById('videoProgress').textContent = Math.round(progress) + '%';
+
+            // Update status
+            const statusEl = document.getElementById('status');
+            const statusText = document.getElementById('statusText');
+            if (metrics.isPaused) {
+                statusEl.className = 'status-item paused';
+                statusText.textContent = 'Paused';
+            } else if (metrics.isRunning) {
+                statusEl.className = 'status-item running';
+                statusText.textContent = 'Running';
+            } else {
+                statusEl.className = 'status-item';
+                statusText.textContent = 'Stopped';
+            }
+        }
+
+        // Simulate metric updates
+        function simulateMetrics() {
+            if (metrics.isRunning && !metrics.isPaused) {
+                metrics.totalVideosGenerated += Math.floor(Math.random() * 3) + 1;
+                metrics.totalViews += Math.floor(Math.random() * 10000) + 1000;
+                metrics.averageEngagement = Math.random() * 10;
+                metrics.revenue = metrics.totalViews * 0.0001;
+
+                if (Math.random() > 0.95) {
+                    metrics.viralHits++;
+                    updateViralFeed();
+                }
+
+                if (metrics.totalVideosGenerated % 20 === 0) {
+                    metrics.currentBatch++;
+                }
+            }
+            updateDisplay();
+        }
+
+        // Update viral feed
+        function updateViralFeed() {
+            const feed = document.getElementById('viralFeed');
+            const score = Math.floor(Math.random() * 30) + 70;
+            const views = Math.floor(Math.random() * 500000) + 100000;
+            const persona = personas[Math.floor(Math.random() * personas.length)];
+
+            const newItem = `
+                <div class="viral-item">
+                    <div class="viral-score">${score}</div>
+                    <div class="viral-details">
+                        <strong>${persona.name}</strong> - Hidden iPhone Feature
+                        <div style="color: #666; font-size: 0.9rem; margin-top: 5px;">
+                            ${views.toLocaleString()} views • TikTok • 2 hours ago
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            feed.innerHTML = newItem + feed.innerHTML;
+            if (feed.children.length > 5) {
+                feed.removeChild(feed.lastChild);
+            }
+        }
+
+        // Control functions
+        function startWorkflow() {
+            metrics.isRunning = true;
+            metrics.isPaused = false;
+            console.log('Starting workflow...');
+            // In real implementation, this would call the API
+        }
+
+        function pauseWorkflow() {
+            metrics.isPaused = true;
+            console.log('Pausing workflow...');
+        }
+
+        function resumeWorkflow() {
+            metrics.isPaused = false;
+            console.log('Resuming workflow...');
+        }
+
+        function refreshMetrics() {
+            console.log('Refreshing metrics...');
+            // In real implementation, this would fetch from API
+        }
+
+        function updateScale(value) {
+            document.getElementById('scaleValue').textContent = value;
+            metrics.activePersonas = Math.floor(3 * value);
+            initPersonas();
+            console.log('Scaling to:', value);
+        }
+
+        // Initialize
+        initPersonas();
+        updateDisplay();
+
+        // Start simulation
+        setInterval(simulateMetrics, 2000);
+
+        // Auto-start
+        setTimeout(() => {
+            metrics.isRunning = true;
+            updateDisplay();
+        }, 1000);
+    </script>
+</body>
+</html>

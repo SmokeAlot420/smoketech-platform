@@ -1,0 +1,179 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
+import { VertexAINanoBananaService } from './src/services/vertexAINanoBanana';
+import { VEO3Service, VEO3JSONPrompt } from './src/services/veo3Service';
+import * as path from 'path';
+import * as fs from 'fs/promises';
+
+/**
+ * SmokeTech Studio Demo Video Generator
+ *
+ * Generates an 8-second ultra-realistic demo video showcasing
+ * SmokeTech Studio's AI video generation capabilities.
+ *
+ * Perfect for social media (TikTok, Instagram Reels, YouTube Shorts)
+ */
+
+async function generateSmokeTechDemo() {
+  console.log('🎬 SmokeTech Studio Demo Video Generator');
+  console.log('=' .repeat(80));
+
+  // Check environment
+  if (!process.env.GEMINI_API_KEY) {
+    console.error('❌ GEMINI_API_KEY environment variable is required');
+    console.log('Please set your Gemini API key in the .env file');
+    return;
+  }
+
+  try {
+    // Stage 1: Generate Character Image with NanoBanana
+    console.log('\n📸 Stage 1: Generating ultra-realistic character...');
+
+    const nanoBanana = new VertexAINanoBananaService();
+
+    const characterPrompt = `Professional tech presenter, 30 years old, male, attractive professional appearance.
+
+NATURAL REALISM:
+- Natural skin texture with visible pores
+- Subtle expression lines around eyes
+- Natural skin tone variations
+- Authentic human imperfections
+
+OUTFIT: Navy blue polo shirt with subtle SmokeTech Studio logo embroidered on chest
+
+SETTING: Modern office/studio environment, soft professional lighting
+
+EXPRESSION: Confident, friendly, approachable - slightly smiling
+
+POSE: Front-facing, professional headshot composition
+
+PRESERVE: Exact facial features for video generation`;
+
+    console.log('   Generating character image...');
+    const imageResults = await nanoBanana.generateImage(characterPrompt, {
+      temperature: 0.3,
+      numImages: 1
+    });
+
+    if (!imageResults || imageResults.length === 0) {
+      throw new Error('Failed to generate character image');
+    }
+
+    const characterImagePath = imageResults[0].imagePath;
+    console.log(`   ✅ Character generated: ${characterImagePath}`);
+    console.log(`   💰 Cost: $0.02 (NanoBanana)`);
+
+    // Stage 2: Generate 8-Second Video with VEO3
+    console.log('\n🎬 Stage 2: Generating 8-second demo video...');
+
+    const veo3 = new VEO3Service();
+
+    // Optimized JSON prompt structure for VEO3
+    const videoPrompt: VEO3JSONPrompt = {
+      prompt: "Professional tech presenter introduces SmokeTech Studio's AI video generation capabilities in a modern office setting",
+
+      negative_prompt: "amateur, low quality, blurry, distorted face, unnatural movements, robotic, synthetic",
+
+      timing: {
+        "0-2s": "Professional presenter faces camera with confident smile, begins speaking with natural hand gesture toward screen",
+        "2-6s": "Presenter gestures demonstratively, maintaining eye contact with camera, natural professional body language and micro-expressions",
+        "6-8s": "Presenter concludes with friendly nod and slight lean forward, maintains professional confidence"
+      },
+
+      config: {
+        duration_seconds: 8,
+        aspect_ratio: "9:16",
+        resolution: "1080p",
+
+        camera: {
+          motion: "stable with subtle professional movement",
+          angle: "eye-level medium shot",
+          lens_type: "standard 50mm equivalent",
+          position: "centered on presenter",
+          movements: [
+            "slight zoom in from 0-2s for engagement",
+            "stable from 2-6s for message delivery",
+            "subtle zoom out 6-8s for conclusion"
+          ]
+        },
+
+        lighting: {
+          mood: "professional and inviting",
+          time_of_day: "soft daylight",
+          consistency: "maintain throughout video",
+          enhancement: "soft key light from front-left, subtle fill from right, slight rim light for depth"
+        },
+
+        character: {
+          description: "Professional male tech presenter, 30s, navy polo with SmokeTech logo, natural realistic appearance",
+          action: "Speaking directly to camera, natural professional gestures, confident eye contact",
+          preservation: "Maintain exact facial features, natural expressions, professional demeanor",
+          micro_expressions: [
+            "friendly smile throughout",
+            "slight eyebrow raise during key points",
+            "natural blinks and head movement",
+            "authentic speaking mouth movements"
+          ],
+          movement_quality: "natural, fluid, professional - no robotic or synthetic movements"
+        },
+
+        environment: {
+          setting: "Modern office/studio",
+          details: "Blurred professional background, soft bokeh, minimal distractions",
+          atmosphere: "Clean, professional, tech-forward"
+        },
+
+        audio: {
+          primary: "\"Hi, I'm Alex from SmokeTech Studio. I was generated by AI. Create unlimited videos like this.\"",
+          generate: true,
+          style: "natural professional speaking voice"
+        },
+
+        technical: {
+          frame_rate: 30,
+          motion_blur: "natural cinematic",
+          color_grading: "professional warm tones",
+          sharpness: "crisp but natural"
+        }
+      }
+    };
+
+    console.log('   Sending request to VEO3...');
+    const videoResult = await veo3.generateVideoSegment({
+      prompt: videoPrompt,
+      duration: 8,
+      aspectRatio: '9:16',
+      firstFrame: characterImagePath,
+      quality: 'high',
+      enableSoundGeneration: true,
+      enablePromptRewriting: false // Use our optimized prompt as-is
+    });
+
+    if (!videoResult.success || !videoResult.videos.length) {
+      throw new Error('Failed to generate video: ' + videoResult.error);
+    }
+
+    const finalVideoPath = videoResult.videos[0].videoPath;
+    console.log(`   ✅ Video generated: ${finalVideoPath}`);
+    console.log(`   ⏱️  Duration: ${videoResult.videos[0].duration} seconds`);
+    console.log(`   💰 Cost: $${videoResult.metadata?.cost.toFixed(2) || '6.00'}`);
+
+    // Stage 3: Summary
+    console.log('\n🎉 SmokeTech Studio Demo Video Complete!');
+    console.log('=' .repeat(80));
+    console.log(`📁 Video Location: ${finalVideoPath}`);
+    console.log(`📱 Format: Vertical 9:16 (1080x1920) - TikTok/Instagram ready`);
+    console.log(`⏱️  Duration: 8 seconds`);
+    console.log(`💰 Total Cost: $${(0.02 + (videoResult.metadata?.cost || 6.00)).toFixed(2)}`);
+    console.log('\n🚀 Ready to share on social media!');
+    console.log('\nSign off as SmokeDev 🚬');
+
+  } catch (error) {
+    console.error('\n❌ Demo generation failed:', error);
+    throw error;
+  }
+}
+
+// Run the demo generator
+generateSmokeTechDemo().catch(console.error);

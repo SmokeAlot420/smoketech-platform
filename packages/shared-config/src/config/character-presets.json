@@ -1,0 +1,357 @@
+{
+  "presets": [
+    {
+      "id": "business-executive",
+      "name": "Business Executive",
+      "category": "business",
+      "description": "Professional executive with commanding presence for corporate content",
+      "icon": "💼",
+      "physicalTemplate": {
+        "ageRange": [30, 55],
+        "genderOptions": ["male", "female", "non-binary"],
+        "defaultGender": "male",
+        "styleDescriptors": [
+          "confident executive presence",
+          "professional corporate demeanor",
+          "commanding authority",
+          "sharp facial features",
+          "well-groomed professional appearance"
+        ]
+      },
+      "styleTemplate": {
+        "attire": [
+          "Navy blue or charcoal suit with crisp white shirt",
+          "Business casual blazer with premium dress shirt",
+          "Sharp executive professional attire"
+        ],
+        "grooming": "Impeccably groomed with natural professional appearance",
+        "accessories": [
+          "Premium watch (subtle luxury)",
+          "Quality leather briefcase or portfolio",
+          "Minimalist cufflinks",
+          "Professional eyewear (when needed)"
+        ],
+        "hairStyle": "Short, professionally styled",
+        "makeupStyle": "Professional natural (for female/non-binary)"
+      },
+      "professionalContext": {
+        "defaultProfession": "Business Executive & Corporate Advisor",
+        "settings": [
+          "Modern corporate office",
+          "Executive boardroom",
+          "Professional conference room",
+          "Upscale business lounge"
+        ],
+        "messagingThemes": [
+          "Leadership and success",
+          "Business strategy and growth",
+          "Corporate excellence",
+          "Professional development"
+        ]
+      },
+      "realismConfig": {
+        "skinRealism": true,
+        "naturalImperfections": true,
+        "avoidFeminineFeatures": false,
+        "emphasizeProfessionalism": true
+      }
+    },
+    {
+      "id": "lifestyle-influencer",
+      "name": "Lifestyle Influencer",
+      "category": "influencer",
+      "description": "Modern content creator with authentic appeal for social media",
+      "icon": "✨",
+      "physicalTemplate": {
+        "ageRange": [22, 35],
+        "genderOptions": ["female", "male", "non-binary"],
+        "defaultGender": "female",
+        "styleDescriptors": [
+          "confident and relatable",
+          "modern influencer aesthetic",
+          "authentic appeal",
+          "expressive features",
+          "warm engaging presence"
+        ]
+      },
+      "styleTemplate": {
+        "attire": [
+          "Stylish casual or smart-casual outfits",
+          "On-trend outfit combinations",
+          "Branded or designer pieces",
+          "Modern lifestyle aesthetic"
+        ],
+        "grooming": "Polished yet natural and approachable",
+        "accessories": [
+          "Minimalist trendy jewelry",
+          "Designer sunglasses",
+          "Fashionable accessories",
+          "Statement pieces"
+        ],
+        "hairStyle": "Long wavy or styled with highlights",
+        "makeupStyle": "Professional yet natural (polished eyes, natural lips)"
+      },
+      "professionalContext": {
+        "defaultProfession": "Lifestyle Content Creator & Influencer",
+        "settings": [
+          "Modern urban environment",
+          "Trendy cafe or lounge",
+          "Professional studio setup",
+          "Lifestyle brand setting"
+        ],
+        "messagingThemes": [
+          "Lifestyle inspiration",
+          "Personal development",
+          "Brand partnerships",
+          "Authentic storytelling"
+        ]
+      },
+      "realismConfig": {
+        "skinRealism": true,
+        "naturalImperfections": true,
+        "avoidFeminineFeatures": false,
+        "emphasizeProfessionalism": false
+      }
+    },
+    {
+      "id": "insurance-specialist",
+      "name": "Insurance Specialist",
+      "category": "business",
+      "description": "Warm professional insurance expert with trustworthy appeal",
+      "icon": "🛡️",
+      "physicalTemplate": {
+        "ageRange": [26, 45],
+        "genderOptions": ["female", "male"],
+        "defaultGender": "female",
+        "styleDescriptors": [
+          "warm trustworthy professional",
+          "approachable expertise",
+          "professional confidence",
+          "family-focused warmth",
+          "consultative demeanor"
+        ]
+      },
+      "styleTemplate": {
+        "attire": [
+          "Navy blazer with branded top",
+          "Professional business casual",
+          "QuoteMoto branded elements",
+          "Polished and approachable attire"
+        ],
+        "grooming": "Natural professional with warm earth tones",
+        "accessories": [
+          "Classic pearl or gold jewelry",
+          "Professional watch",
+          "Minimal accessories",
+          "Brand-appropriate styling"
+        ],
+        "hairStyle": "Medium-length with soft waves or professional cut",
+        "makeupStyle": "Natural professional with warm tones"
+      },
+      "professionalContext": {
+        "defaultProfession": "Insurance Specialist & Family Advisor",
+        "settings": [
+          "Professional insurance office",
+          "Consultation desk",
+          "Client meeting room",
+          "Home office setup"
+        ],
+        "messagingThemes": [
+          "Family protection",
+          "Trusted guidance",
+          "Educational content",
+          "Client consultation"
+        ],
+        "brandIntegration": {
+          "name": "QuoteMoto",
+          "colors": ["#FF6B35", "#0066CC"],
+          "style": "Professional and approachable"
+        }
+      },
+      "realismConfig": {
+        "skinRealism": true,
+        "naturalImperfections": true,
+        "avoidFeminineFeatures": false,
+        "emphasizeProfessionalism": true
+      }
+    },
+    {
+      "id": "healthcare-professional",
+      "name": "Healthcare Professional",
+      "category": "healthcare",
+      "description": "Trusted medical professional with caring demeanor",
+      "icon": "⚕️",
+      "physicalTemplate": {
+        "ageRange": [28, 50],
+        "genderOptions": ["female", "male", "non-binary"],
+        "defaultGender": "female",
+        "styleDescriptors": [
+          "caring medical professional",
+          "trustworthy healthcare provider",
+          "compassionate expertise",
+          "professional medical demeanor",
+          "reassuring presence"
+        ]
+      },
+      "styleTemplate": {
+        "attire": [
+          "White medical coat over professional attire",
+          "Scrubs with professional styling",
+          "Business casual medical professional",
+          "Clean professional medical wear"
+        ],
+        "grooming": "Clean, professional medical standard",
+        "accessories": [
+          "Stethoscope (when appropriate)",
+          "Medical badge or ID",
+          "Minimal professional jewelry",
+          "Professional watch"
+        ],
+        "hairStyle": "Professional, pulled back or neatly styled",
+        "makeupStyle": "Minimal natural professional"
+      },
+      "professionalContext": {
+        "defaultProfession": "Healthcare Professional & Medical Advisor",
+        "settings": [
+          "Medical office or clinic",
+          "Hospital consultation room",
+          "Professional medical setting",
+          "Telemedicine setup"
+        ],
+        "messagingThemes": [
+          "Patient care and trust",
+          "Medical expertise",
+          "Health education",
+          "Compassionate service"
+        ]
+      },
+      "realismConfig": {
+        "skinRealism": true,
+        "naturalImperfections": true,
+        "avoidFeminineFeatures": false,
+        "emphasizeProfessionalism": true
+      }
+    },
+    {
+      "id": "tech-entrepreneur",
+      "name": "Tech Entrepreneur",
+      "category": "business",
+      "description": "Modern tech professional with innovative mindset",
+      "icon": "💻",
+      "physicalTemplate": {
+        "ageRange": [25, 40],
+        "genderOptions": ["male", "female", "non-binary"],
+        "defaultGender": "male",
+        "styleDescriptors": [
+          "innovative tech professional",
+          "modern entrepreneur mindset",
+          "confident startup founder",
+          "approachable tech leader",
+          "creative problem solver"
+        ]
+      },
+      "styleTemplate": {
+        "attire": [
+          "Smart-casual tech professional",
+          "Designer sweater with premium jeans",
+          "Modern blazer with t-shirt",
+          "Executive athleisure for tech meetings"
+        ],
+        "grooming": "Modern professional, slightly casual",
+        "accessories": [
+          "Modern smartwatch",
+          "Wireless earbuds",
+          "Minimalist accessories",
+          "Tech-forward styling"
+        ],
+        "hairStyle": "Modern styled or slightly casual professional",
+        "makeupStyle": "Natural minimal (for female/non-binary)"
+      },
+      "professionalContext": {
+        "defaultProfession": "Tech Entrepreneur & Startup Founder",
+        "settings": [
+          "Modern tech office",
+          "Co-working space",
+          "Innovation lab",
+          "Startup environment"
+        ],
+        "messagingThemes": [
+          "Innovation and disruption",
+          "Tech entrepreneurship",
+          "Startup growth",
+          "Digital transformation"
+        ]
+      },
+      "realismConfig": {
+        "skinRealism": true,
+        "naturalImperfections": true,
+        "avoidFeminineFeatures": false,
+        "emphasizeProfessionalism": false
+      }
+    },
+    {
+      "id": "creative-director",
+      "name": "Creative Director",
+      "category": "creative",
+      "description": "Artistic professional with creative vision and style",
+      "icon": "🎨",
+      "physicalTemplate": {
+        "ageRange": [28, 45],
+        "genderOptions": ["female", "male", "non-binary"],
+        "defaultGender": "female",
+        "styleDescriptors": [
+          "creative artistic vision",
+          "stylish professional aesthetic",
+          "confident creative leader",
+          "artistic expression",
+          "innovative mindset"
+        ]
+      },
+      "styleTemplate": {
+        "attire": [
+          "Stylish creative professional attire",
+          "Designer pieces with artistic flair",
+          "Modern fashion-forward looks",
+          "Creative industry standard"
+        ],
+        "grooming": "Polished with creative expression",
+        "accessories": [
+          "Statement jewelry or accessories",
+          "Designer eyewear",
+          "Artistic elements",
+          "Creative styling pieces"
+        ],
+        "hairStyle": "Stylish with creative expression",
+        "makeupStyle": "Artistic professional (for female/non-binary)"
+      },
+      "professionalContext": {
+        "defaultProfession": "Creative Director & Brand Strategist",
+        "settings": [
+          "Modern design studio",
+          "Creative agency office",
+          "Art gallery or exhibition space",
+          "Contemporary creative workspace"
+        ],
+        "messagingThemes": [
+          "Creative vision and strategy",
+          "Brand storytelling",
+          "Design innovation",
+          "Artistic leadership"
+        ]
+      },
+      "realismConfig": {
+        "skinRealism": true,
+        "naturalImperfections": true,
+        "avoidFeminineFeatures": false,
+        "emphasizeProfessionalism": false
+      }
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2025-09-30",
+    "totalPresets": 6,
+    "categories": ["business", "influencer", "healthcare", "creative"],
+    "defaultPreset": "business-executive"
+  }
+}

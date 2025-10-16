@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Ultra-Realistic AI Video Generation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 40px 0 60px;
+            color: white;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #fff, #f0f4ff, #fff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(255,255,255,0.3);
+        }
+
+        @keyframes titleGlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 20px 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.2);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        /* Character Showcase */
+        .character-showcase {
+            margin: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .character-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .character-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #667eea, #764ba2, #667eea);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .character-card:hover::before {
+            opacity: 1;
+        }
+
+        .character-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .character-avatar {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .character-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .character-profession {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .character-dialogue {
+            font-style: italic;
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        /* Form Container */
+        .form-container {
+            background: rgba(255,255,255,0.95);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 40px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-title {
+            text-align: center;
+            color: #333;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .simple-form {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input, textarea {
+            padding: 15px 20px;
+            border: 2px solid #e1e8ed;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            font-family: inherit;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .style-toggle, .platform-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .style-toggle label, .platform-toggle label {
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .toggle-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .toggle-btn {
+            background: white;
+            border: 2px solid #e1e8ed;
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: #666;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .toggle-btn:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .toggle-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: #667eea;
+            color: white;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .generate-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .generate-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .generate-btn:hover::before {
+            left: 100%;
+        }
+
+        .generate-btn:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .generate-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* Video Gallery */
+        .video-gallery {
+            margin: 60px 0;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .video-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            cursor: pointer;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #f0f4ff, #e8f0ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-thumbnail::after {
+            content: '▶️';
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255,255,255,0.9);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-card:hover .video-thumbnail::after {
+            opacity: 1;
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-character {
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .video-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Status and Video Containers */
+        .status-container {
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 15px;
+            display: none;
+            backdrop-filter: blur(10px);
+        }
+
+        .status-container.show {
+            display: block;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #e1e8ed;
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+            width: 0%;
+            border-radius: 6px;
+        }
+
+        .status-text {
+            color: #333;
+            font-weight: 600;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .video-container {
+            margin-top: 30px;
+            text-align: center;
+            display: none;
+            background: rgba(255,255,255,0.9);
+            border-radius: 15px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .video-container.show {
+            display: block;
+        }
+
+        video {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .error-message {
+            background: rgba(220, 53, 69, 0.1);
+            border: 1px solid rgba(220, 53, 69, 0.3);
+            color: #dc3545;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+            backdrop-filter: blur(10px);
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .stats-bar {
+                gap: 20px;
+            }
+
+            .stat-item {
+                padding: 15px 20px;
+            }
+
+            .characters-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 25px;
+            }
+
+            .toggle-buttons {
+                justify-content: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .character-card, .video-card, .form-container {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .character-card:nth-child(1) { animation-delay: 0.1s; }
+        .character-card:nth-child(2) { animation-delay: 0.2s; }
+        .character-card:nth-child(3) { animation-delay: 0.3s; }
+        .character-card:nth-child(4) { animation-delay: 0.4s; }
+        .character-card:nth-child(5) { animation-delay: 0.5s; }
+        .character-card:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+
+    <div class="main-container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1 class="hero-title">🎬 Ultra-Realistic Videos</h1>
+            <p class="hero-subtitle">AI-Powered Spokesperson Videos in 60 Seconds</p>
+
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-number">10,000+</div>
+                    <div class="stat-label">Videos Created</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Lip Sync Accuracy</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3 Min</div>
+                    <div class="stat-label">Generation Time</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Character Showcase -->
+        <div class="character-showcase">
+            <h2 class="section-title">Choose Your Character</h2>
+            <div class="characters-grid">
+                <div class="character-card" data-character="sophia">
+                    <div class="character-avatar">✨</div>
+                    <div class="character-name">Sophia</div>
+                    <div class="character-profession">Lifestyle Influencer</div>
+                    <div class="character-dialogue">"Hey gorgeous! Let me share the exclusive lifestyle tips you've been waiting for"</div>
+                </div>
+
+                <div class="character-card" data-character="laura">
+                    <div class="character-avatar">🧑‍💼</div>
+                    <div class="character-name">Laura</div>
+                    <div class="character-profession">Insurance Expert</div>
+                    <div class="character-dialogue">"Save hundreds on your car insurance with our expert analysis"</div>
+                </div>
+
+                <div class="character-card" data-character="mike">
+                    <div class="character-avatar">💪</div>
+                    <div class="character-name">Mike</div>
+                    <div class="character-profession">Fitness Coach</div>
+                    <div class="character-dialogue">"Transform your body with proven workout strategies"</div>
+                </div>
+
+                <div class="character-card" data-character="sarah">
+                    <div class="character-avatar">👩‍🍳</div>
+                    <div class="character-name">Sarah</div>
+                    <div class="character-profession">Master Chef</div>
+                    <div class="character-dialogue">"Master restaurant-quality recipes from your home kitchen"</div>
+                </div>
+
+                <div class="character-card" data-character="alex">
+                    <div class="character-avatar">👔</div>
+                    <div class="character-name">Alex</div>
+                    <div class="character-profession">Tech Expert</div>
+                    <div class="character-dialogue">"Get the latest reviews and tech insights you need"</div>
+                </div>
+
+                <div class="character-card" data-character="emma">
+                    <div class="character-avatar">👗</div>
+                    <div class="character-name">Emma</div>
+                    <div class="character-profession">Fashion Stylist</div>
+                    <div class="character-dialogue">"Upgrade your wardrobe with professional styling tips"</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Container -->
+        <div class="form-container">
+            <h3 class="form-title">Create Your Video</h3>
+
+            <form id="videoForm">
+                <div class="simple-form">
+                    <div class="form-group">
+                        <label for="characterName">👤 Character Name</label>
+                        <input type="text" id="characterName" name="characterName"
+                               placeholder="e.g., Laura, Mike, Sarah" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="userRequest">💬 What do you want them to say?</label>
+                        <textarea id="userRequest" name="userRequest"
+                                  placeholder="e.g., Review car insurance options, Teach workout tips, Promote my restaurant..."
+                                  required rows="3"></textarea>
+                    </div>
+
+                    <div class="style-toggle">
+                        <label>🎭 Style:</label>
+                        <div class="toggle-buttons">
+                            <button type="button" class="toggle-btn active" data-style="professional">Professional</button>
+                            <button type="button" class="toggle-btn" data-style="casual">Casual</button>
+                            <button type="button" class="toggle-btn" data-style="trendy">Trendy</button>
+                        </div>
+                    </div>
+
+                    <div class="platform-toggle">
+                        <label>📱 Platform:</label>
+                        <div class="toggle-buttons">
+                            <button type="button" class="toggle-btn active" data-platform="youtube">YouTube</button>
+                            <button type="button" class="toggle-btn" data-platform="tiktok">TikTok</button>
+                            <button type="button" class="toggle-btn" data-platform="instagram">Instagram</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="generate-btn" id="generateBtn">
+                    🎬 Generate Ultra-Realistic Video
+                </button>
+            </form>
+
+            <div class="status-container" id="statusContainer">
+                <div class="status-text" id="statusText">Initializing generation...</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div id="timeInfo" style="text-align: center; color: #666; font-size: 0.9rem; margin-top: 10px;">
+                    Estimated time: 3-5 minutes
+                </div>
+            </div>
+
+            <div class="video-container" id="videoContainer">
+                <h3 style="margin-bottom: 20px; color: #333;">✅ Your Video is Ready!</h3>
+                <video id="generatedVideo" controls></video>
+                <div style="margin-top: 20px;">
+                    <button onclick="downloadVideo()" style="background: #28a745; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin-right: 10px;">
+                        📥 Download Video
+                    </button>
+                    <button onclick="generateAnother()" style="background: #667eea; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer;">
+                        🔄 Generate Another
+                    </button>
+                </div>
+            </div>
+
+            <div class="error-message" id="errorMessage"></div>
+        </div>
+
+        <!-- Video Gallery -->
+        <div class="video-gallery">
+            <h2 class="section-title">Recent Creations</h2>
+            <div class="videos-grid">
+                <div class="video-card">
+                    <div class="video-thumbnail">🧑‍💼</div>
+                    <div class="video-info">
+                        <div class="video-character">Pedro - Insurance Expert</div>
+                        <div class="video-description">Professional insurance advice and savings tips</div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">💪</div>
+                    <div class="video-info">
+                        <div class="video-character">Mike - Fitness Coach</div>
+                        <div class="video-description">High-energy workout motivation and tips</div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">👩‍🍳</div>
+                    <div class="video-info">
+                        <div class="video-character">Sarah - Master Chef</div>
+                        <div class="video-description">Culinary techniques and recipe secrets</div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">👔</div>
+                    <div class="video-info">
+                        <div class="video-character">Alex - Tech Expert</div>
+                        <div class="video-description">Latest gadget reviews and tech insights</div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">👗</div>
+                    <div class="video-info">
+                        <div class="video-character">Emma - Fashion Stylist</div>
+                        <div class="video-description">Professional styling tips and trends</div>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">📈</div>
+                    <div class="video-info">
+                        <div class="video-character">Jessica - Marketing Pro</div>
+                        <div class="video-description">Growth strategies and ROI optimization</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app-enhanced.js"></script>
+</body>
+</html>

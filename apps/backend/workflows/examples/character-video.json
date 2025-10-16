@@ -1,0 +1,31 @@
+{
+  "workflowId": "character-video-v1",
+  "description": "Generate character image first, then create video from it",
+  "metadata": {
+    "author": "SmokeDev",
+    "version": "1.0.0",
+    "tags": ["character", "nanobana", "veo3", "two-stage"]
+  },
+  "nodes": [
+    {
+      "id": "character_image_1",
+      "type": "character_image",
+      "inputs": {
+        "characterPrompt": "Professional insurance advisor, 30-35 years old, attractive female, mixed European-Asian heritage. Amber-brown eyes, confident smile. Business casual attire with blue polo. Natural realistic appearance with subtle skin texture. Modern office background.",
+        "model": "nanobana",
+        "preserveFeatures": true
+      },
+      "outputs": ["characterImagePath"]
+    },
+    {
+      "id": "video_gen_1",
+      "type": "video_generation",
+      "inputs": {
+        "characterImagePath": "{{character_image_1.characterImagePath}}",
+        "prompt": "The insurance advisor explains how to save money on car insurance. She gestures confidently while speaking, maintaining eye contact with the viewer. Professional office background with natural lighting.",
+        "model": "veo3-fast",
+        "duration": 8
+      }
+    }
+  ]
+}

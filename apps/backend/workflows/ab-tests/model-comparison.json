@@ -1,0 +1,45 @@
+{
+  "testId": "veo3-fast-vs-standard",
+  "description": "Compare VEO3 Fast vs Standard models for video generation quality and cost",
+  "metadata": {
+    "author": "SmokeDev",
+    "purpose": "Determine if VEO3 Standard's higher cost justifies quality improvement",
+    "hypothesis": "VEO3 Fast provides sufficient quality for most use cases at 1/7th the cost"
+  },
+  "variants": [
+    {
+      "variantId": "veo3-fast",
+      "workflowId": "video-veo3-fast-v1",
+      "description": "VEO3 Fast model - $0.75/second",
+      "nodes": [
+        {
+          "id": "video_gen_1",
+          "type": "video_generation",
+          "inputs": {
+            "prompt": "A professional insurance advisor explains car insurance benefits in a modern office. She gestures confidently while speaking, with natural lighting from large windows. Clean, professional aesthetic.",
+            "model": "veo3-fast",
+            "duration": 8,
+            "aspectRatio": "16:9"
+          }
+        }
+      ]
+    },
+    {
+      "variantId": "veo3-standard",
+      "workflowId": "video-veo3-standard-v1",
+      "description": "VEO3 Standard model - $5.00/second",
+      "nodes": [
+        {
+          "id": "video_gen_1",
+          "type": "video_generation",
+          "inputs": {
+            "prompt": "A professional insurance advisor explains car insurance benefits in a modern office. She gestures confidently while speaking, with natural lighting from large windows. Clean, professional aesthetic.",
+            "model": "veo3-standard",
+            "duration": 8,
+            "aspectRatio": "16:9"
+          }
+        }
+      ]
+    }
+  ]
+}

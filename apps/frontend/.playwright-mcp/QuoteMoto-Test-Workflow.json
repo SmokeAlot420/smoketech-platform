@@ -1,0 +1,35 @@
+{
+  "workflowId": "QuoteMoto Insurance Demo",
+  "description": "QuoteMoto-branded 8-second insurance video with advanced techniques",
+  "nodes": [
+    {
+      "id": "characterImage_1",
+      "type": "characterImage",
+      "inputs": {
+        "model": "Imagen 3",
+        "characterPrompt": "Professional insurance agent, 30-35 years old, wearing QuoteMoto blue polo shirt (#0074c9), friendly and trustworthy expression, modern office setting with California insurance marketplace branding"
+      },
+      "outputs": []
+    },
+    {
+      "id": "videoGeneration_1",
+      "type": "videoGeneration",
+      "inputs": {
+        "model": "VEO3 Fast",
+        "prompt": "Insurance agent smiles confidently at camera and gestures to compare insurance rates. Professional office with QuoteMoto branding visible. Natural, engaging 8-second presentation about California's #1 insurance marketplace.",
+        "duration": 8,
+        "aspectRatio": "16:9"
+      },
+      "outputs": []
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge_1",
+      "source": "characterImage_1",
+      "sourceHandle": "characterImagePath",
+      "target": "videoGeneration_1",
+      "targetHandle": "characterImagePath"
+    }
+  ]
+}

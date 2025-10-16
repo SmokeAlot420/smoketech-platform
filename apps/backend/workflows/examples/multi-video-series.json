@@ -1,0 +1,68 @@
+{
+  "workflowId": "multi-video-series-v1",
+  "description": "Generate character once, create multiple video segments, then stitch together",
+  "metadata": {
+    "author": "SmokeDev",
+    "version": "1.0.0",
+    "tags": ["series", "nanobana", "veo3", "stitch", "long-form"]
+  },
+  "nodes": [
+    {
+      "id": "character_image_1",
+      "type": "character_image",
+      "inputs": {
+        "characterPrompt": "Professional insurance advisor Aria, 32 years old, attractive female, amber-brown eyes, confident expression. Blue polo with QuoteMoto logo. Natural realistic appearance with subtle imperfections. Modern office setting.",
+        "model": "nanobana",
+        "preserveFeatures": true
+      },
+      "outputs": ["characterImagePath"]
+    },
+    {
+      "id": "video_segment_1",
+      "type": "video_generation",
+      "inputs": {
+        "characterImagePath": "{{character_image_1.characterImagePath}}",
+        "prompt": "Aria introduces herself: 'Hi, I'm Aria from QuoteMoto, and I'm here to help you save money on car insurance.' She smiles warmly and maintains eye contact with the viewer.",
+        "model": "veo3-fast",
+        "duration": 8
+      },
+      "outputs": ["videoPath"]
+    },
+    {
+      "id": "video_segment_2",
+      "type": "video_generation",
+      "inputs": {
+        "characterImagePath": "{{character_image_1.characterImagePath}}",
+        "prompt": "Aria explains the benefits: 'Did you know that comparing quotes from multiple insurers can save you hundreds of dollars per year?' She gestures to emphasize key points.",
+        "model": "veo3-fast",
+        "duration": 8
+      },
+      "outputs": ["videoPath"]
+    },
+    {
+      "id": "video_segment_3",
+      "type": "video_generation",
+      "inputs": {
+        "characterImagePath": "{{character_image_1.characterImagePath}}",
+        "prompt": "Aria provides the call to action: 'Visit QuoteMoto dot com today for your free instant quote. It only takes 2 minutes!' She points toward the camera with confidence.",
+        "model": "veo3-fast",
+        "duration": 8
+      },
+      "outputs": ["videoPath"]
+    },
+    {
+      "id": "stitch_videos",
+      "type": "video_stitch",
+      "inputs": {
+        "videoPaths": [
+          "{{video_segment_1.videoPath}}",
+          "{{video_segment_2.videoPath}}",
+          "{{video_segment_3.videoPath}}"
+        ],
+        "transitionType": "dissolve",
+        "transitionDuration": 0.5,
+        "outputPath": "generated/stitched/aria-insurance-explainer-{{timestamp}}.mp4"
+      }
+    }
+  ]
+}

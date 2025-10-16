@@ -1,0 +1,45 @@
+{
+  "testId": "aria-prompt-v1-vs-v2",
+  "description": "Compare detailed vs simple prompts for Aria character generation",
+  "metadata": {
+    "author": "SmokeDev",
+    "purpose": "Determine optimal prompt strategy for character consistency",
+    "hypothesis": "Simple prompts with general realism guidance produce more natural results than over-specified imperfections"
+  },
+  "variants": [
+    {
+      "variantId": "detailed-prompt",
+      "workflowId": "aria-detailed-v1",
+      "description": "Detailed prompt with specific imperfections listed",
+      "nodes": [
+        {
+          "id": "character_image_1",
+          "type": "character_image",
+          "inputs": {
+            "characterPrompt": "Professional insurance advisor Aria QuoteMoto, 32 years old, attractive female of mixed European-Asian heritage. FACIAL STRUCTURE: Oval face with high cheekbones, balanced proportions. Amber-brown almond-shaped eyes with natural iris detail. Straight nose with subtle bridge definition. Full lips with natural color. Natural facial asymmetry (left eye slightly smaller). SKIN REALISM: Visible pores especially in T-zone, natural skin texture variations, subtle expression lines around eyes (crow's feet hints), fine nasolabial folds, natural oil shine on nose and forehead, subtle redness near nostrils, fine peach fuzz on cheeks, uneven skin tone with darker/lighter patches. ATTIRE: Professional blue polo with QuoteMoto logo embroidered on chest, business casual. SETTING: Modern insurance office background with natural lighting.",
+            "model": "nanobana",
+            "preserveFeatures": true,
+            "temperature": 0.3
+          }
+        }
+      ]
+    },
+    {
+      "variantId": "simple-prompt",
+      "workflowId": "aria-simple-v1",
+      "description": "Simple prompt with general realism guidance",
+      "nodes": [
+        {
+          "id": "character_image_1",
+          "type": "character_image",
+          "inputs": {
+            "characterPrompt": "Professional insurance advisor, 30-35 years old, attractive female, mixed heritage, amber-brown eyes. Business casual attire with blue polo and QuoteMoto logo. Natural realistic appearance with subtle skin texture and authentic human imperfections. Modern office background with natural lighting.",
+            "model": "nanobana",
+            "preserveFeatures": true,
+            "temperature": 0.3
+          }
+        }
+      ]
+    }
+  ]
+}

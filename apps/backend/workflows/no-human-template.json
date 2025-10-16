@@ -1,0 +1,105 @@
+{
+  "id": "no-human-video-v1",
+  "name": "No-Human Video Generation",
+  "version": "1.0.0",
+  "description": "Generate video without human characters using text-to-video",
+  "executionMode": "sequential",
+  "nodes": [
+    {
+      "id": "video_gen",
+      "type": "video_generator",
+      "label": "Generate Video (Text-to-Video)",
+      "params": {
+        "model": "veo3-fast",
+        "duration": 8,
+        "aspectRatio": "16:9",
+        "quality": "high",
+        "count": 1,
+        "enableSound": true,
+        "enablePromptRewriting": true
+      },
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "string",
+          "description": "Video scene description (no humans)",
+          "required": true
+        },
+        {
+          "name": "negativePrompt",
+          "type": "string",
+          "description": "Negative prompt (what to avoid)",
+          "required": false,
+          "defaultValue": "humans, people, person, face, body"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "video",
+          "description": "Generated video",
+          "required": false
+        },
+        {
+          "name": "videoPath",
+          "type": "string",
+          "description": "Path to generated video",
+          "required": false
+        },
+        {
+          "name": "metadata",
+          "type": "object",
+          "description": "Video generation metadata",
+          "required": false
+        }
+      ],
+      "metadata": {
+        "position": {"x": 200, "y": 150}
+      }
+    }
+  ],
+  "connections": [],
+  "inputs": [
+    {
+      "name": "videoPrompt",
+      "type": "string",
+      "description": "Video scene description (landscapes, products, abstract scenes)",
+      "required": true,
+      "targetNodeId": "video_gen",
+      "targetSlot": "prompt",
+      "defaultValue": "Cinematic view of mountain landscape at sunrise, clouds rolling over peaks, golden hour lighting, dramatic shadows, 4K nature documentary style"
+    },
+    {
+      "name": "negativePrompt",
+      "type": "string",
+      "description": "Elements to avoid in generation",
+      "required": false,
+      "targetNodeId": "video_gen",
+      "targetSlot": "negativePrompt",
+      "defaultValue": "humans, people, person, face, body, blur, low quality, watermark"
+    }
+  ],
+  "outputs": [
+    {
+      "name": "finalVideo",
+      "type": "video",
+      "description": "Generated video without humans",
+      "sourceNodeId": "video_gen",
+      "sourceSlot": "videoPath"
+    }
+  ],
+  "metadata": {
+    "created": "2025-01-06",
+    "author": "SmokeDev",
+    "estimatedCost": 1.20,
+    "estimatedDuration": 120,
+    "tags": ["no-human", "landscape", "product", "text-to-video", "abstract"],
+    "useCases": [
+      "Nature documentaries",
+      "Product showcases",
+      "Abstract backgrounds",
+      "Architectural walkthroughs",
+      "B-roll footage"
+    ]
+  }
+}
