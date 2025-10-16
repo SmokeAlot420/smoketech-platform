@@ -79,17 +79,26 @@ npm run build
 
 ### Development:
 ```bash
-# Start both frontend and backend in dev mode
+# Start EVERYTHING with one command!
 npm run dev
 
-# Frontend will be on: http://localhost:7777
-# Backend API will be on: http://localhost:3007 (via omega-service.js)
+# This automatically starts:
+# - Temporal Server (http://localhost:8233)
+# - Temporal Worker (backend services)
+# - Frontend UI (http://localhost:7777)
+
+# All processes run in one terminal with color-coded output:
+# - Temporal Server: Blue
+# - Worker: Green
+# - Frontend: Yellow
 ```
 
 ### Common Commands:
 ```bash
 npm run build          # Build all apps and packages
-npm run dev            # Start all apps in dev mode
+npm run dev            # Start all apps in dev mode (one command!)
+npm run dev:frontend   # Start only frontend (for quick UI testing)
+npm run dev:backend    # Start only backend worker
 npm run test           # Run tests in all apps
 npm run lint           # Lint all code
 npm run clean          # Clean build artifacts
