@@ -8,7 +8,7 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "concurrently --kill-others --names \"temporal,worker,frontend\" --prefix-colors \"blue,green,yellow\" \"cd apps/backend && ./temporal.exe server start-dev\" \"cd apps/backend && npm run worker\" \"turbo run dev --filter=openjourney-app\"",
+    "dev": "concurrently --kill-others --names \"temporal,worker,frontend\" --prefix-colors \"blue,green,yellow\" \"cd apps/backend && .\\temporal.exe server start-dev\" \"cd apps/backend && npm run worker\" \"turbo run dev --filter=openjourney-app\"",
     "dev:frontend": "turbo run dev --filter=openjourney-app",
     "dev:backend": "turbo run dev --filter=viral-ai-content-system",
     "build": "turbo run build",
