@@ -436,32 +436,41 @@ const aria = new QuoteMotoCharacter(ariaPreset);
 
 ### Starting Local Development:
 
-**Terminal 1 - Temporal Server:**
-```bash
-cd "E:\v2 repo\smoketech-platform\apps\backend"
-./temporal.exe server start-dev
-# Access UI: http://localhost:8233
-```
-
-**Terminal 2 - Backend Worker:**
-```bash
-cd "E:\v2 repo\smoketech-platform\apps\backend"
-npm run worker
-# Executes Temporal workflows
-```
-
-**Terminal 3 - Frontend:**
+**ONE COMMAND - STARTS EVERYTHING:**
 ```bash
 cd "E:\v2 repo\smoketech-platform"
 npm run dev
-# Frontend: http://localhost:7777
+
+# This automatically starts:
+# ✅ Temporal Server (http://localhost:8233)
+# ✅ Temporal Worker (executes workflows)
+# ✅ Frontend UI (http://localhost:7777)
+
+# All output is color-coded in ONE terminal:
+# - Temporal Server: Blue
+# - Worker: Green
+# - Frontend: Yellow
+
+# Press Ctrl+C once to stop everything
 ```
 
-**Terminal 4 - Omega Service (if needed):**
+**Alternative - Individual Services (for debugging):**
 ```bash
-cd "E:\v2 repo\omega-platform"  # Original repo if still needed
-node omega-service.js
-# Bridge service: http://localhost:3007
+# Start only frontend (useful for UI development)
+npm run dev:frontend
+
+# Start only backend worker (useful for workflow testing)
+npm run dev:backend
+
+# Start Temporal Server manually (if needed)
+cd apps/backend && ./temporal.exe server start-dev
+```
+
+**Legacy Omega Service (NOT NEEDED - monorepo has everything):**
+```bash
+# Only needed if testing legacy omega-service.js bridge
+cd "E:\v2 repo\omega-platform"  # Original repo
+node omega-service.js            # Port 3007
 ```
 
 ### Making Changes:
@@ -632,6 +641,7 @@ Builds all apps with production optimizations.
 
 ---
 
-**Last Updated:** 2025-01-16
+**Last Updated:** 2025-10-16
 **Monorepo Version:** 1.0.0
+**Package Status:** 100% Latest (All dependencies at newest versions)
 **Maintained By:** SmokeDev 🚬
